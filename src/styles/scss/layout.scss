@@ -1,0 +1,12 @@
+@use 'variables';
+/* Header */
+$header-height: 60px;
+$header-color: #fff;
+
+/* Side Bar */
+$side-bar-color: linear-gradient(to bottom, variables.$primary-color, variables.$secondary-color);
+$side-bar-width: 200px;
+$side-bar-collapse-width: 60px;
+
+/* Footer */
+$footer-height: 30px;

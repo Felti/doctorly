@@ -1,0 +1,15 @@
+@use './../../../../styles/scss/variables.scss';
+@use './../../../../styles/scss/custom/input-theme.scss';
+
+
+#wrapper {
+    background-image: url("./../../../../../public/assets/images/pngtree-green-floral-background-with-leaves-picture-image_1920970.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.test{
+    background: rgb(24,167,216);
+    background: linear-gradient(180deg, rgba(24,167,216,1) 0%, rgba(139,231,230,1) 100%);
+}

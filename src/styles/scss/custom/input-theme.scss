@@ -1,0 +1,15 @@
+@use "./../variables.scss";
+
+
+
+::ng-deep .mdc-notched-outline > * {
+  border-color: rgb(206, 206, 206) !important;
+}
+
+::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
+  border-color: variables.$primary-color !important;
+}
+
+::ng-deep .mdc-text-field--invalid .mdc-notched-outline > * {
+  border-color: rgb(184, 45, 10) !important;
+}
