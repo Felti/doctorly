@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
 
 const routes: Routes = [
+  
   {
-    path: '', 
-    component: SignInComponent
-  },
-  {
-    path: 'test',
+    path: '',
     component: MainLayoutComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),
+        //canActivateChild: [AuthenticatedGuard]
+      }
+    ]
+
   }];
 
 @NgModule({

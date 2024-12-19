@@ -20,12 +20,13 @@
                                 <div class="separator"
                                         style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; align-self: center; border-bottom: 2px solid rgb(212, 212, 212);  margin: 2rem 0rem; width: 40%;"></div>
                                 <div class="sign-in-form flex-column">
+                                        <form [formGroup]="signInForm">
                                         <div class="flex-column">
                                                 <mat-label class="input-label">Email ou
                                                         nom d'utilisateur</mat-label>
                                                 <mat-form-field appearance="outline"
-                                                        class="example-full-width">
-                                                        <input matInput>
+                                                         class="example-full-width">
+                                                        <input formControlName="login" matInput>
                                                 </mat-form-field>
                                         </div>
                                         <div class="flex-column">
@@ -34,13 +35,14 @@
                                                 <mat-form-field appearance="outline"
                                                         class="example-full-width">
         
-                                                        <input matInput>
+                                                        <input matInput formControlName="password">
                                                 </mat-form-field>
                                         </div>
+                                </form>
 
                                 </div>
                                 
-                                <button style="border-radius: 6px;  background-color: #28b0a5!important; width: 100%;"  mat-flat-button>s'identifier</button>
+                                <button (click)="signIn()" style="border-radius: 6px;  background-color: #28b0a5!important; width: 100%;"  mat-flat-button>s'identifier</button>
                                 <div class="flex-row w-100 "
                                         style="align-items: center; justify-content: space-between;">
                                         <div class="flex-row"
