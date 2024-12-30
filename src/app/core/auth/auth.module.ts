@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
 import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './service/auth.effects';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     SharedModule,
-    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers, { metaReducers: fromAuth.metaReducers })
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer, { }),
+    EffectsModule.forFeature([AuthEffects])
   ]
 })
 export class AuthModule { }

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { tap } from 'rxjs';
-import { JwtToken } from '../../../shared/models/jwt.token';
 import { Route, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../reducers';
+import { loginAction } from '../auth.actions';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +18,9 @@ export class SignInComponent {
   signInForm!: FormGroup;
   buttonDisabled: Boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router :Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router :Router, private store : Store<AppState>) {
+    console.log("souts");
+    
     this.signInForm = this.fb.group({
       login: ["admin", [Validators.required]],
       password: ["admin", [Validators.required]]
@@ -33,10 +37,9 @@ export class SignInComponent {
 
       this.authService.signIn(login, password).pipe(
         tap((token : string)  => {
-          console.log("called : ",token)
-          this.router.navigateByUrl('/home')
-        } 
-        )
+          this.store.dispatch(loginAction({token}));
+          this.router.navigateByUrl('/home');
+        })
       ).subscribe({
         
         next : response  => console.log("response : ", response),

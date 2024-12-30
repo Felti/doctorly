@@ -9,19 +9,18 @@ import { MainHeaderComponent } from './shared/components/main-header/main-header
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SharedModule } from './shared/components/shared.module';
 import { AuthModule } from './core/auth/auth.module';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthRoutingModule } from './core/auth/auth-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import {  provideHttpClient } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
     MainFooterComponent,
     MainLayoutComponent,
     MainHeaderComponent,
-    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,10 +28,9 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
     AuthModule,
     AuthRoutingModule,
     SharedModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreModule.forRoot(reducers, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([])
   ],  
   providers: [
     provideClientHydration(withEventReplay()),
